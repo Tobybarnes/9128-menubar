@@ -19,6 +19,7 @@
 		6BC5B4E7E2516282320893B7 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD34ECA25169BA2082AAB58 /* KeychainStore.swift */; };
 		716C088E9F40B99B39AD712E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A971EE543B1D1DD9A1785DF /* SettingsView.swift */; };
 		97322533DC181B1C742F2E1F /* LaunchAtLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD6947EF9BED76B80E907A1 /* LaunchAtLoginController.swift */; };
+		9733458C2BC93EF90A90D808 /* AppIdentityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09E7A78F83C62A9B5CDF37 /* AppIdentityTests.swift */; };
 		AC2731AD7161359D14DB7DCF /* ScrobblePolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F18253FEC3CBA6469AC973 /* ScrobblePolicyTests.swift */; };
 		B4E8A4F1F5CFD466AA41EA1D /* ScrobblePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31544B5C6076F47CD97809D /* ScrobblePolicy.swift */; };
 		B57D7A5A534292760EA13222 /* Radio9128App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232ADB4661D177CCF13A9011 /* Radio9128App.swift */; };
@@ -64,6 +65,7 @@
 		91FE75564CF0AAE451905DAD /* ScrobbleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobbleCoordinator.swift; sourceTree = "<group>"; };
 		BD604B82165951A90F71019D /* TrackMetadataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMetadataTests.swift; sourceTree = "<group>"; };
 		CA2234F9F33E9FF72A15C179 /* LastFM.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = LastFM.xcconfig; sourceTree = "<group>"; };
+		CD09E7A78F83C62A9B5CDF37 /* AppIdentityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIdentityTests.swift; sourceTree = "<group>"; };
 		CDA3AEA5500036CC9F11B3BD /* ASIPIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ASIPIcon.png; sourceTree = "<group>"; };
 		D4F18253FEC3CBA6469AC973 /* ScrobblePolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobblePolicyTests.swift; sourceTree = "<group>"; };
 		D548706D035AFD537F90DF94 /* LastFMSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMSigner.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 		36DB78683EF27F0C4A79E011 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				CD09E7A78F83C62A9B5CDF37 /* AppIdentityTests.swift */,
 				06DD8E6C3100A7FFBF79C1FC /* BrandAssetsTests.swift */,
 				6DD25D73C00CF363CA485942 /* LastFMConfigurationTests.swift */,
 				3F08B7070BCD167DE3CF603C /* LastFMSigningTests.swift */,
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9733458C2BC93EF90A90D808 /* AppIdentityTests.swift in Sources */,
 				63A677A384F6C947B1F8E150 /* BrandAssetsTests.swift in Sources */,
 				D348965DA769BE6E8B83C23E /* LastFMConfigurationTests.swift in Sources */,
 				E9F93796BB6A15EB63CCC8AC /* LastFMSigningTests.swift in Sources */,
@@ -279,7 +283,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tobybarnes.radio9128.tests;
 				PRODUCT_MODULE_NAME = Radio9128Tests;
 				PRODUCT_NAME = Radio9128Tests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/9128.app/Contents/MacOS/9128";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/9128live_menubar_app.app/Contents/MacOS/9128live_menubar_app";
 			};
 			name = Debug;
 		};
@@ -295,7 +299,7 @@
 				INFOPLIST_FILE = Config/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tobybarnes.radio9128;
 				PRODUCT_MODULE_NAME = Radio9128;
-				PRODUCT_NAME = 9128;
+				PRODUCT_NAME = 9128live_menubar_app;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -312,7 +316,7 @@
 				INFOPLIST_FILE = Config/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = com.tobybarnes.radio9128;
 				PRODUCT_MODULE_NAME = Radio9128;
-				PRODUCT_NAME = 9128;
+				PRODUCT_NAME = 9128live_menubar_app;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
@@ -325,7 +329,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tobybarnes.radio9128.tests;
 				PRODUCT_MODULE_NAME = Radio9128Tests;
 				PRODUCT_NAME = Radio9128Tests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/9128.app/Contents/MacOS/9128";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/9128live_menubar_app.app/Contents/MacOS/9128live_menubar_app";
 			};
 			name = Release;
 		};
