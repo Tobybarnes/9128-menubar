@@ -1,0 +1,357 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		05997FB9D0746017F71B62ED /* PlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1240EDEF02366423ED4922BD /* PlayerController.swift */; };
+		16C249BC84F2DD24AFD570DB /* PlayerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF73CAAC9BCB86EC76BC2EB /* PlayerPopover.swift */; };
+		1BBBA32818606117298CC971 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818C150FB130F1D9452F51F /* AppModel.swift */; };
+		281FFA952BE4FF41069F94B2 /* LastFMSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D548706D035AFD537F90DF94 /* LastFMSigner.swift */; };
+		33322B558D7B8ED53558EF71 /* TrackMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078FB3C3F7F5049CB940DC /* TrackMetadata.swift */; };
+		429D3FA2A69EFAFC1DF7F06E /* RadioStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059B6D1F49FADCBFBC4537B /* RadioStatusTests.swift */; };
+		4E25E9A3CC9CB1B2E22539A7 /* RadioStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0CF50C050F6B8EE01761E /* RadioStatus.swift */; };
+		6BC5B4E7E2516282320893B7 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD34ECA25169BA2082AAB58 /* KeychainStore.swift */; };
+		716C088E9F40B99B39AD712E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A971EE543B1D1DD9A1785DF /* SettingsView.swift */; };
+		97322533DC181B1C742F2E1F /* LaunchAtLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD6947EF9BED76B80E907A1 /* LaunchAtLoginController.swift */; };
+		AC2731AD7161359D14DB7DCF /* ScrobblePolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F18253FEC3CBA6469AC973 /* ScrobblePolicyTests.swift */; };
+		B4E8A4F1F5CFD466AA41EA1D /* ScrobblePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31544B5C6076F47CD97809D /* ScrobblePolicy.swift */; };
+		B57D7A5A534292760EA13222 /* Radio9128App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232ADB4661D177CCF13A9011 /* Radio9128App.swift */; };
+		D0741AD7FE631B27A14D2BE1 /* LastFMManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8658AD3C973D57297209CBF2 /* LastFMManager.swift */; };
+		D6BF80A2573E599DF3D83C38 /* ASIPIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CDA3AEA5500036CC9F11B3BD /* ASIPIcon.png */; };
+		DD90D34707A6064AF9D25D24 /* RadioService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422FADF3ADBA69A323DBE8D9 /* RadioService.swift */; };
+		DEDC3AF51498374AC118CD80 /* TrackMetadataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD604B82165951A90F71019D /* TrackMetadataTests.swift */; };
+		E7A6C6AD63D7EDDFD048CB4F /* ScrobbleCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 91FE75564CF0AAE451905DAD /* ScrobbleCoordinator.swift */; };
+		E9F93796BB6A15EB63CCC8AC /* LastFMSigningTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F08B7070BCD167DE3CF603C /* LastFMSigningTests.swift */; };
+		EC3A0E0E032BBA22C2250677 /* LastFMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67BED6B86A036C5256A7D267 /* LastFMClient.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FD9B1F9BB680A25174C1D424 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E427DA64EE3220B1A23E240E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 42419787F1C2AB5022BCC760;
+			remoteInfo = Radio9128;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0BF73CAAC9BCB86EC76BC2EB /* PlayerPopover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPopover.swift; sourceTree = "<group>"; };
+		0E078FB3C3F7F5049CB940DC /* TrackMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMetadata.swift; sourceTree = "<group>"; };
+		1240EDEF02366423ED4922BD /* PlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerController.swift; sourceTree = "<group>"; };
+		232ADB4661D177CCF13A9011 /* Radio9128App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radio9128App.swift; sourceTree = "<group>"; };
+		38C0CF50C050F6B8EE01761E /* RadioStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStatus.swift; sourceTree = "<group>"; };
+		3F08B7070BCD167DE3CF603C /* LastFMSigningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMSigningTests.swift; sourceTree = "<group>"; };
+		422FADF3ADBA69A323DBE8D9 /* RadioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioService.swift; sourceTree = "<group>"; };
+		4E1D53F2C2BDB9E7A0D44543 /* Radio9128.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radio9128.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		67BED6B86A036C5256A7D267 /* LastFMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMClient.swift; sourceTree = "<group>"; };
+		6818C150FB130F1D9452F51F /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		6A971EE543B1D1DD9A1785DF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		6CD6947EF9BED76B80E907A1 /* LaunchAtLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginController.swift; sourceTree = "<group>"; };
+		8658AD3C973D57297209CBF2 /* LastFMManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMManager.swift; sourceTree = "<group>"; };
+		9059B6D1F49FADCBFBC4537B /* RadioStatusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStatusTests.swift; sourceTree = "<group>"; };
+		91FE75564CF0AAE451905DAD /* ScrobbleCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobbleCoordinator.swift; sourceTree = "<group>"; };
+		BD604B82165951A90F71019D /* TrackMetadataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackMetadataTests.swift; sourceTree = "<group>"; };
+		CDA3AEA5500036CC9F11B3BD /* ASIPIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ASIPIcon.png; sourceTree = "<group>"; };
+		D4F18253FEC3CBA6469AC973 /* ScrobblePolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobblePolicyTests.swift; sourceTree = "<group>"; };
+		D548706D035AFD537F90DF94 /* LastFMSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMSigner.swift; sourceTree = "<group>"; };
+		F16BD622E2043F2D8BE39F84 /* Radio9128Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Radio9128Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F31544B5C6076F47CD97809D /* ScrobblePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobblePolicy.swift; sourceTree = "<group>"; };
+		FFD34ECA25169BA2082AAB58 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		2387320B203C9FA470D14587 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6818C150FB130F1D9452F51F /* AppModel.swift */,
+				FFD34ECA25169BA2082AAB58 /* KeychainStore.swift */,
+				67BED6B86A036C5256A7D267 /* LastFMClient.swift */,
+				8658AD3C973D57297209CBF2 /* LastFMManager.swift */,
+				D548706D035AFD537F90DF94 /* LastFMSigner.swift */,
+				6CD6947EF9BED76B80E907A1 /* LaunchAtLoginController.swift */,
+				1240EDEF02366423ED4922BD /* PlayerController.swift */,
+				0BF73CAAC9BCB86EC76BC2EB /* PlayerPopover.swift */,
+				232ADB4661D177CCF13A9011 /* Radio9128App.swift */,
+				422FADF3ADBA69A323DBE8D9 /* RadioService.swift */,
+				38C0CF50C050F6B8EE01761E /* RadioStatus.swift */,
+				91FE75564CF0AAE451905DAD /* ScrobbleCoordinator.swift */,
+				F31544B5C6076F47CD97809D /* ScrobblePolicy.swift */,
+				6A971EE543B1D1DD9A1785DF /* SettingsView.swift */,
+				0E078FB3C3F7F5049CB940DC /* TrackMetadata.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		36DB78683EF27F0C4A79E011 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				3F08B7070BCD167DE3CF603C /* LastFMSigningTests.swift */,
+				9059B6D1F49FADCBFBC4537B /* RadioStatusTests.swift */,
+				D4F18253FEC3CBA6469AC973 /* ScrobblePolicyTests.swift */,
+				BD604B82165951A90F71019D /* TrackMetadataTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		64B56A9CD51432E71FF44C23 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				CDA3AEA5500036CC9F11B3BD /* ASIPIcon.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		73F2DE567CA0C9FEB055356E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4E1D53F2C2BDB9E7A0D44543 /* Radio9128.app */,
+				F16BD622E2043F2D8BE39F84 /* Radio9128Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F566654ABC1681C28C22CF57 = {
+			isa = PBXGroup;
+			children = (
+				64B56A9CD51432E71FF44C23 /* Resources */,
+				2387320B203C9FA470D14587 /* Sources */,
+				36DB78683EF27F0C4A79E011 /* Tests */,
+				73F2DE567CA0C9FEB055356E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		42419787F1C2AB5022BCC760 /* Radio9128 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CD5077CE0DC18A718A05AD02 /* Build configuration list for PBXNativeTarget "Radio9128" */;
+			buildPhases = (
+				B6BDBA63AE67DF52797B0B46 /* Sources */,
+				FE553ADBD5F8E4F7BF45923E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Radio9128;
+			productName = Radio9128;
+			productReference = 4E1D53F2C2BDB9E7A0D44543 /* Radio9128.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E8BC43DD0C3E5F54451D524A /* Radio9128Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5417A21CA57A94412A2FF4B1 /* Build configuration list for PBXNativeTarget "Radio9128Tests" */;
+			buildPhases = (
+				44A9AE2F1062075BAC7E75D8 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C86A5348E87121F2C027FA5 /* PBXTargetDependency */,
+			);
+			name = Radio9128Tests;
+			productName = Radio9128Tests;
+			productReference = F16BD622E2043F2D8BE39F84 /* Radio9128Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E427DA64EE3220B1A23E240E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = D1CA754EE34F1FE7DBC9E414 /* Build configuration list for PBXProject "Radio9128" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = F566654ABC1681C28C22CF57;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				42419787F1C2AB5022BCC760 /* Radio9128 */,
+				E8BC43DD0C3E5F54451D524A /* Radio9128Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FE553ADBD5F8E4F7BF45923E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D6BF80A2573E599DF3D83C38 /* ASIPIcon.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		44A9AE2F1062075BAC7E75D8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9F93796BB6A15EB63CCC8AC /* LastFMSigningTests.swift in Sources */,
+				429D3FA2A69EFAFC1DF7F06E /* RadioStatusTests.swift in Sources */,
+				AC2731AD7161359D14DB7DCF /* ScrobblePolicyTests.swift in Sources */,
+				DEDC3AF51498374AC118CD80 /* TrackMetadataTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B6BDBA63AE67DF52797B0B46 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1BBBA32818606117298CC971 /* AppModel.swift in Sources */,
+				6BC5B4E7E2516282320893B7 /* KeychainStore.swift in Sources */,
+				EC3A0E0E032BBA22C2250677 /* LastFMClient.swift in Sources */,
+				D0741AD7FE631B27A14D2BE1 /* LastFMManager.swift in Sources */,
+				281FFA952BE4FF41069F94B2 /* LastFMSigner.swift in Sources */,
+				97322533DC181B1C742F2E1F /* LaunchAtLoginController.swift in Sources */,
+				05997FB9D0746017F71B62ED /* PlayerController.swift in Sources */,
+				16C249BC84F2DD24AFD570DB /* PlayerPopover.swift in Sources */,
+				B57D7A5A534292760EA13222 /* Radio9128App.swift in Sources */,
+				DD90D34707A6064AF9D25D24 /* RadioService.swift in Sources */,
+				4E25E9A3CC9CB1B2E22539A7 /* RadioStatus.swift in Sources */,
+				E7A6C6AD63D7EDDFD048CB4F /* ScrobbleCoordinator.swift in Sources */,
+				B4E8A4F1F5CFD466AA41EA1D /* ScrobblePolicy.swift in Sources */,
+				716C088E9F40B99B39AD712E /* SettingsView.swift in Sources */,
+				33322B558D7B8ED53558EF71 /* TrackMetadata.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C86A5348E87121F2C027FA5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 42419787F1C2AB5022BCC760 /* Radio9128 */;
+			targetProxy = FD9B1F9BB680A25174C1D424 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1E8F06B44EF5BC081CCF7AAC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tobybarnes.radio9128.tests;
+				PRODUCT_MODULE_NAME = Radio9128Tests;
+				PRODUCT_NAME = Radio9128Tests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/9128.app/Contents/MacOS/9128";
+			};
+			name = Debug;
+		};
+		38003F03CB6CC4475B9ED62A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_TESTABILITY = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Config/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tobybarnes.radio9128;
+				PRODUCT_MODULE_NAME = Radio9128;
+				PRODUCT_NAME = 9128;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		51FA2021C216F10903A89B0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGNING_REQUIRED = NO;
+				CODE_SIGN_IDENTITY = "-";
+				ENABLE_HARDENED_RUNTIME = NO;
+				ENABLE_TESTABILITY = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Config/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tobybarnes.radio9128;
+				PRODUCT_MODULE_NAME = Radio9128;
+				PRODUCT_NAME = 9128;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		981DFB8E5327464C427835BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tobybarnes.radio9128.tests;
+				PRODUCT_MODULE_NAME = Radio9128Tests;
+				PRODUCT_NAME = Radio9128Tests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/9128.app/Contents/MacOS/9128";
+			};
+			name = Release;
+		};
+		BFE5BB0E3BE7CF3544473151 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		D52DEA5F43359F9572C86EA4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5417A21CA57A94412A2FF4B1 /* Build configuration list for PBXNativeTarget "Radio9128Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E8F06B44EF5BC081CCF7AAC /* Debug */,
+				981DFB8E5327464C427835BD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CD5077CE0DC18A718A05AD02 /* Build configuration list for PBXNativeTarget "Radio9128" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				38003F03CB6CC4475B9ED62A /* Debug */,
+				51FA2021C216F10903A89B0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D1CA754EE34F1FE7DBC9E414 /* Build configuration list for PBXProject "Radio9128" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D52DEA5F43359F9572C86EA4 /* Debug */,
+				BFE5BB0E3BE7CF3544473151 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E427DA64EE3220B1A23E240E /* Project object */;
+}
