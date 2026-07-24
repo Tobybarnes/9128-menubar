@@ -20,11 +20,6 @@ struct SettingsView: View {
             }
 
             Section("Last.fm") {
-                TextField("API key", text: $lastFM.apiKey)
-                    .textFieldStyle(.roundedBorder)
-                SecureField("Shared secret", text: $lastFM.sharedSecret)
-                    .textFieldStyle(.roundedBorder)
-
                 HStack {
                     Circle()
                         .fill(lastFM.isConnected ? BrandAssets.accent : Color.secondary.opacity(0.5))
@@ -42,7 +37,7 @@ struct SettingsView: View {
                         .foregroundStyle(.secondary)
                 }
 
-                Text("The app scrobbles after half the track or four minutes. Radio duration is confirmed when the next track starts, so short tracks may appear on Last.fm a little later.")
+                Text("Each listener connects their own Last.fm account. The app scrobbles after half the track or two minutes. Radio duration is confirmed when the next track starts, so short tracks may appear on Last.fm a little later.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
@@ -58,10 +53,7 @@ struct SettingsView: View {
     private var actionButtons: some View {
         switch lastFM.state {
         case .connected:
-            HStack {
-                Button("Save credentials") { lastFM.saveCredentials() }
-                Button("Disconnect", role: .destructive) { lastFM.disconnect() }
-            }
+            Button("Disconnect", role: .destructive) { lastFM.disconnect() }
         case .waitingForApproval:
             HStack {
                 Button("I've approved it") {
@@ -79,15 +71,12 @@ struct SettingsView: View {
                 Text("Contacting Last.fm…").foregroundStyle(.secondary)
             }
         case .disconnected, .failed:
-            HStack {
-                Button("Save credentials") { lastFM.saveCredentials() }
-                Button("Connect Last.fm") {
-                    Task { await lastFM.connect() }
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(BrandAssets.accent)
-                .disabled(!lastFM.credentialsAreConfigured)
+            Button("Connect Last.fm") {
+                Task { await lastFM.connect() }
             }
+            .buttonStyle(.borderedProminent)
+            .tint(BrandAssets.accent)
+            .disabled(!lastFM.configurationIsAvailable)
         }
     }
 }

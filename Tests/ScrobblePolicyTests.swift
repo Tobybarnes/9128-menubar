@@ -2,13 +2,13 @@ import XCTest
 @testable import Radio9128
 
 final class ScrobblePolicyTests: XCTestCase {
-    func testUsesHalfTrackForTracksShorterThanEightMinutes() {
+    func testUsesHalfTrackForThreeMinuteTracks() {
         XCTAssertEqual(ScrobblePolicy.requiredListenTime(trackDuration: 180), 90)
     }
 
-    func testCapsThresholdAtFourMinutes() {
-        XCTAssertEqual(ScrobblePolicy.requiredListenTime(trackDuration: 900), 240)
-        XCTAssertEqual(ScrobblePolicy.requiredListenTime(trackDuration: nil), 240)
+    func testCapsLongAndUnknownTracksAtTwoMinutes() {
+        XCTAssertEqual(ScrobblePolicy.requiredListenTime(trackDuration: 900), 120)
+        XCTAssertEqual(ScrobblePolicy.requiredListenTime(trackDuration: nil), 120)
     }
 
     func testNeverScrobblesTracksShorterThanThirtySeconds() {

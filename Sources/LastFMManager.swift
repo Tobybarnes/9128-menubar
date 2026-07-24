@@ -11,29 +11,27 @@ final class LastFMManager: ObservableObject {
         case failed(String)
     }
 
-    @Published var apiKey: String
-    @Published var sharedSecret: String
     @Published private(set) var state: ConnectionState
     @Published private(set) var lastScrobble: String?
     @Published private(set) var activityMessage: String?
 
     private enum Account {
-        static let apiKey = "lastfm-api-key"
-        static let sharedSecret = "lastfm-api-secret"
         static let session = "lastfm-session"
         static let username = "lastfm-username"
     }
 
+    private let configuration: LastFMConfiguration?
     private let store = KeychainStore(service: "com.tobybarnes.radio9128")
     private let client = LastFMClient()
     private var pendingToken: String?
     private var sessionKey: String?
 
-    init() {
-        apiKey = store.string(for: Account.apiKey) ?? ""
-        sharedSecret = store.string(for: Account.sharedSecret) ?? ""
+    init(configuration: LastFMConfiguration? = LastFMConfiguration()) {
+        self.configuration = configuration
         sessionKey = store.string(for: Account.session)
-        if let sessionKey, !sessionKey.isEmpty,
+        if configuration == nil {
+            state = .failed("This build is missing its Last.fm configuration.")
+        } else if let sessionKey, !sessionKey.isEmpty,
            let username = store.string(for: Account.username), !username.isEmpty {
             state = .connected(username: username)
         } else {
@@ -46,9 +44,8 @@ final class LastFMManager: ObservableObject {
         return false
     }
 
-    var credentialsAreConfigured: Bool {
-        !apiKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty &&
-        !sharedSecret.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    var configurationIsAvailable: Bool {
+        configuration != nil
     }
 
     var connectionLabel: String {
@@ -61,38 +58,11 @@ final class LastFMManager: ObservableObject {
         }
     }
 
-    func saveCredentials() {
-        let cleanKey = apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
-        let cleanSecret = sharedSecret.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !cleanKey.isEmpty, !cleanSecret.isEmpty else {
-            state = .failed("Add both Last.fm credentials.")
+    func connect() async {
+        guard let credentials else {
+            state = .failed("This build is missing its Last.fm configuration.")
             return
         }
-
-        do {
-            let credentialsChanged = cleanKey != store.string(for: Account.apiKey) ||
-                cleanSecret != store.string(for: Account.sharedSecret)
-            try store.set(cleanKey, for: Account.apiKey)
-            try store.set(cleanSecret, for: Account.sharedSecret)
-            apiKey = cleanKey
-            sharedSecret = cleanSecret
-            if credentialsChanged {
-                store.delete(Account.session)
-                store.delete(Account.username)
-                sessionKey = nil
-                state = .disconnected
-            } else if !isConnected {
-                state = .disconnected
-            }
-            activityMessage = "Credentials saved in Keychain."
-        } catch {
-            state = .failed(error.localizedDescription)
-        }
-    }
-
-    func connect() async {
-        saveCredentials()
-        guard credentialsAreConfigured else { return }
         state = .connecting
         activityMessage = nil
 
@@ -101,7 +71,7 @@ final class LastFMManager: ObservableObject {
             pendingToken = token
             var components = URLComponents(string: "https://www.last.fm/api/auth/")!
             components.queryItems = [
-                URLQueryItem(name: "api_key", value: apiKey),
+                URLQueryItem(name: "api_key", value: credentials.apiKey),
                 URLQueryItem(name: "token", value: token)
             ]
             guard let url = components.url else {
@@ -117,6 +87,10 @@ final class LastFMManager: ObservableObject {
     func finishAuthorization() async {
         guard let pendingToken else {
             state = .failed("Start the Last.fm connection again.")
+            return
+        }
+        guard let credentials else {
+            state = .failed("This build is missing its Last.fm configuration.")
             return
         }
         state = .connecting
@@ -135,7 +109,7 @@ final class LastFMManager: ObservableObject {
     }
 
     func validateSession() async {
-        guard let sessionKey, credentialsAreConfigured else { return }
+        guard let sessionKey, let credentials else { return }
         do {
             let username = try await client.getAuthenticatedUsername(
                 sessionKey: sessionKey,
@@ -163,8 +137,7 @@ final class LastFMManager: ObservableObject {
     }
 
     func updateNowPlaying(_ track: TrackMetadata) {
-        guard let sessionKey, credentialsAreConfigured else { return }
-        let credentials = credentials
+        guard let sessionKey, let credentials else { return }
         Task {
             do {
                 try await client.updateNowPlaying(
@@ -180,8 +153,7 @@ final class LastFMManager: ObservableObject {
     }
 
     func scrobble(_ track: TrackMetadata, listenedAt: Date) {
-        guard let sessionKey, credentialsAreConfigured else { return }
-        let credentials = credentials
+        guard let sessionKey, let credentials else { return }
         Task {
             do {
                 try await client.scrobble(
@@ -198,8 +170,10 @@ final class LastFMManager: ObservableObject {
         }
     }
 
-    private var credentials: LastFMCredentials {
-        LastFMCredentials(apiKey: apiKey, sharedSecret: sharedSecret)
+    private var credentials: LastFMCredentials? {
+        configuration.map {
+            LastFMCredentials(apiKey: $0.apiKey, sharedSecret: $0.sharedSecret)
+        }
     }
 
     private func handle(_ error: Error) {

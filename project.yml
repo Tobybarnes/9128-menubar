@@ -12,6 +12,9 @@ targets:
   Radio9128:
     type: application
     platform: macOS
+    configFiles:
+      Debug: Config/LastFM.xcconfig
+      Release: Config/LastFM.xcconfig
     sources:
       - Sources
       - Resources

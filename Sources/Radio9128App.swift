@@ -39,7 +39,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if let button = item.button {
             let image = BrandAssets.menuBarIcon.copy() as? NSImage ?? BrandAssets.menuBarIcon
             image.size = NSSize(width: 18, height: 18)
-            image.isTemplate = false
+            image.isTemplate = true
             button.image = image
             button.imagePosition = .imageOnly
             button.toolTip = "9128 live radio"
@@ -86,12 +86,14 @@ enum BrandAssets {
     static let accent = Color(red: 82 / 255, green: 195 / 255, blue: 187 / 255)
 
     static let menuBarIcon: NSImage = {
-        guard let url = Bundle.main.url(forResource: "ASIPIcon", withExtension: "png"),
+        guard let url = Bundle.main.url(forResource: "ASIPMenuBarTemplate", withExtension: "png"),
               let image = NSImage(contentsOf: url) else {
-            return NSImage(systemSymbolName: "radio", accessibilityDescription: "9128")!
+            let fallback = NSImage(systemSymbolName: "radio", accessibilityDescription: "9128")!
+            fallback.isTemplate = true
+            return fallback
         }
         image.size = NSSize(width: 18, height: 18)
-        image.isTemplate = false
+        image.isTemplate = true
         return image
     }()
 }

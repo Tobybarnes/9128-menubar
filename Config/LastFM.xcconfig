@@ -1,0 +1,4 @@
+// Keep distribution credentials in Config/Secrets.xcconfig, which is ignored by Git.
+LASTFM_API_KEY =
+LASTFM_SHARED_SECRET =
+#include? "Secrets.xcconfig"
