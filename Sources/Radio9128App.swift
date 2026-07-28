@@ -19,11 +19,30 @@ struct Radio9128App: App {
 
 @MainActor
 final class AppDelegate: NSObject, NSApplicationDelegate {
+    typealias PlayerPresenter = (NSPopover, NSStatusBarButton) -> Bool
+
+    private static let firstLaunchPlayerKey = "com.tobybarnes.radio9128.hasShownFirstLaunchPlayer"
+
     let model = AppModel()
 
     private var statusItem: NSStatusItem?
     private let popover = NSPopover()
+    private let playerPresenter: PlayerPresenter
     private var cancellables = Set<AnyCancellable>()
+
+    override init() {
+        playerPresenter = { popover, button in
+            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
+            NSApplication.shared.activate(ignoringOtherApps: true)
+            return popover.isShown
+        }
+        super.init()
+    }
+
+    init(playerPresenter: @escaping PlayerPresenter) {
+        self.playerPresenter = playerPresenter
+        super.init()
+    }
 
     func applicationDidFinishLaunching(_ notification: Notification) {
         NSApplication.shared.setActivationPolicy(.accessory)
@@ -42,6 +61,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             image.isTemplate = true
             button.image = image
             button.imagePosition = .imageOnly
+            button.contentTintColor = nil
+            button.alphaValue = 1
+            button.isHidden = false
             button.toolTip = "9128 live radio"
             button.target = self
             button.action = #selector(togglePopover)
@@ -69,6 +91,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             .store(in: &cancellables)
 
         Task { await model.lastFM.validateSession() }
+        presentPlayerOnFirstLaunch()
     }
 
     @objc private func togglePopover() {
@@ -76,9 +99,24 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         if popover.isShown {
             popover.performClose(nil)
         } else {
-            popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
-            NSApplication.shared.activate(ignoringOtherApps: true)
+            showPopover(relativeTo: button)
         }
+    }
+
+    private func presentPlayerOnFirstLaunch() {
+        guard !UserDefaults.standard.bool(forKey: Self.firstLaunchPlayerKey) else { return }
+
+        DispatchQueue.main.async { [weak self] in
+            guard let self, let button = self.statusItem?.button else { return }
+            if self.showPopover(relativeTo: button) {
+                UserDefaults.standard.set(true, forKey: Self.firstLaunchPlayerKey)
+            }
+        }
+    }
+
+    @discardableResult
+    private func showPopover(relativeTo button: NSStatusBarButton) -> Bool {
+        playerPresenter(popover, button)
     }
 }
 

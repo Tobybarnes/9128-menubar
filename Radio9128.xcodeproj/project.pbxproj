@@ -21,6 +21,7 @@
 		97322533DC181B1C742F2E1F /* LaunchAtLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD6947EF9BED76B80E907A1 /* LaunchAtLoginController.swift */; };
 		9733458C2BC93EF90A90D808 /* AppIdentityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09E7A78F83C62A9B5CDF37 /* AppIdentityTests.swift */; };
 		AC2731AD7161359D14DB7DCF /* ScrobblePolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F18253FEC3CBA6469AC973 /* ScrobblePolicyTests.swift */; };
+		B3CB20E21BD8412C5B8BDCE8 /* AppLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F9B53D506BF10D7B222AF4 /* AppLaunchTests.swift */; };
 		B4E8A4F1F5CFD466AA41EA1D /* ScrobblePolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31544B5C6076F47CD97809D /* ScrobblePolicy.swift */; };
 		B57D7A5A534292760EA13222 /* Radio9128App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232ADB4661D177CCF13A9011 /* Radio9128App.swift */; };
 		CA33CE9C261AACEB9641D78B /* LastFMConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2875D1630F6DDFFCFFA6F9 /* LastFMConfiguration.swift */; };
@@ -56,6 +57,7 @@
 		4E1D53F2C2BDB9E7A0D44543 /* Radio9128.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radio9128.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		67BED6B86A036C5256A7D267 /* LastFMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMClient.swift; sourceTree = "<group>"; };
 		6818C150FB130F1D9452F51F /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		68F9B53D506BF10D7B222AF4 /* AppLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchTests.swift; sourceTree = "<group>"; };
 		6A971EE543B1D1DD9A1785DF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		6CD6947EF9BED76B80E907A1 /* LaunchAtLoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchAtLoginController.swift; sourceTree = "<group>"; };
 		6DD25D73C00CF363CA485942 /* LastFMConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMConfigurationTests.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				CD09E7A78F83C62A9B5CDF37 /* AppIdentityTests.swift */,
+				68F9B53D506BF10D7B222AF4 /* AppLaunchTests.swift */,
 				06DD8E6C3100A7FFBF79C1FC /* BrandAssetsTests.swift */,
 				6DD25D73C00CF363CA485942 /* LastFMConfigurationTests.swift */,
 				3F08B7070BCD167DE3CF603C /* LastFMSigningTests.swift */,
@@ -232,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9733458C2BC93EF90A90D808 /* AppIdentityTests.swift in Sources */,
+				B3CB20E21BD8412C5B8BDCE8 /* AppLaunchTests.swift in Sources */,
 				63A677A384F6C947B1F8E150 /* BrandAssetsTests.swift in Sources */,
 				D348965DA769BE6E8B83C23E /* LastFMConfigurationTests.swift in Sources */,
 				E9F93796BB6A15EB63CCC8AC /* LastFMSigningTests.swift in Sources */,
