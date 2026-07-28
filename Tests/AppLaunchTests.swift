@@ -4,7 +4,7 @@ import XCTest
 
 @MainActor
 final class AppLaunchTests: XCTestCase {
-    private let firstLaunchKey = "com.tobybarnes.radio9128.hasShownBeta3Player"
+    private let firstLaunchKey = "com.tobybarnes.radio9128.hasShownBeta4Player"
 
     func testFirstLaunchShowsPlayerPopover() async throws {
         let (preferences, suiteName) = makeIsolatedPreferences()

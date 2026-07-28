@@ -21,7 +21,7 @@ struct Radio9128App: App {
 final class AppDelegate: NSObject, NSApplicationDelegate {
     typealias PlayerPresenter = (NSPopover, NSStatusBarButton) -> Bool
 
-    private static let firstLaunchPlayerKey = "com.tobybarnes.radio9128.hasShownBeta3Player"
+    private static let firstLaunchPlayerKey = "com.tobybarnes.radio9128.hasShownBeta4Player"
 
     let model = AppModel()
 

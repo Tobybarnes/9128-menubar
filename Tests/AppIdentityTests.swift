@@ -7,8 +7,8 @@ final class AppIdentityTests: XCTestCase {
         XCTAssertEqual(Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String, "9128live_menubar_app")
     }
 
-    func testHostAppBundlesBeta3VersionInformation() {
+    func testHostAppBundlesBeta4VersionInformation() {
         XCTAssertEqual(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String, "1.0.0")
-        XCTAssertEqual(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String, "3")
+        XCTAssertEqual(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String, "4")
     }
 }

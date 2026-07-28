@@ -58,7 +58,7 @@ struct SettingsView: View {
 
     private var versionLabel: String {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.0"
-        let beta = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "3"
+        let beta = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "4"
         return "Version \(version) · Beta \(beta)"
     }
 

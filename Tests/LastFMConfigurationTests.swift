@@ -25,7 +25,7 @@ final class LastFMConfigurationTests: XCTestCase {
     }
 
     @MainActor
-    func testBeta3UsesFreshKeychainNamespace() throws {
+    func testBeta4UsesFreshKeychainNamespace() throws {
         let manager = LastFMManager(configuration: LastFMConfiguration(infoDictionary: [
             "LastFMAPIKey": "developer-key",
             "LastFMSharedSecret": "developer-secret",
@@ -34,6 +34,6 @@ final class LastFMConfigurationTests: XCTestCase {
             Mirror(reflecting: manager).children.first(where: { $0.label == "store" })?.value as? KeychainStore
         )
 
-        XCTAssertEqual(store.service, "com.tobybarnes.radio9128.beta3")
+        XCTAssertEqual(store.service, "com.tobybarnes.radio9128.beta4")
     }
 }
