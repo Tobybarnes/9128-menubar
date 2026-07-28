@@ -2,13 +2,14 @@
 
 set -eu
 
-if [[ $# -ne 2 ]]; then
-    print -u2 "Usage: $0 /path/to/9128live_menubar_app.app expected-build-number"
+if [[ $# -ne 3 ]]; then
+    print -u2 "Usage: $0 /path/to/app expected-build-number expected-app-filename"
     exit 64
 fi
 
 app_path=$1
 expected_build=$2
+expected_app_name=$3
 plist_path="$app_path/Contents/Info.plist"
 
 if [[ ! -f "$plist_path" ]]; then
@@ -29,9 +30,16 @@ if [[ -z "$api_key" || -z "$shared_secret" ]]; then
     exit 1
 fi
 
+actual_app_name=${app_path:t}
+
+if [[ "$actual_app_name" != "$expected_app_name" ]]; then
+    print -u2 "Release verification failed: expected app filename $expected_app_name, found $actual_app_name."
+    exit 1
+fi
+
 if [[ "$build_number" != "$expected_build" ]]; then
     print -u2 "Release verification failed: expected build $expected_build, found $build_number."
     exit 1
 fi
 
-print "Release verification passed: build $build_number contains Last.fm configuration."
+print "Release verification passed: $actual_app_name is build $build_number and contains Last.fm configuration."
