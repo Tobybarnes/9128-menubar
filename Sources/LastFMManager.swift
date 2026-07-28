@@ -21,7 +21,7 @@ final class LastFMManager: ObservableObject {
     }
 
     private let configuration: LastFMConfiguration?
-    private let store = KeychainStore(service: "com.tobybarnes.radio9128.beta2")
+    private let store = KeychainStore(service: "com.tobybarnes.radio9128.beta3")
     private let client = LastFMClient()
     private var pendingToken: String?
     private var sessionKey: String?

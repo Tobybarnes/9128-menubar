@@ -21,16 +21,18 @@ struct Radio9128App: App {
 final class AppDelegate: NSObject, NSApplicationDelegate {
     typealias PlayerPresenter = (NSPopover, NSStatusBarButton) -> Bool
 
-    private static let firstLaunchPlayerKey = "com.tobybarnes.radio9128.hasShownFirstLaunchPlayer"
+    private static let firstLaunchPlayerKey = "com.tobybarnes.radio9128.hasShownBeta3Player"
 
     let model = AppModel()
 
     private var statusItem: NSStatusItem?
     private let popover = NSPopover()
     private let playerPresenter: PlayerPresenter
+    private let preferences: UserDefaults
     private var cancellables = Set<AnyCancellable>()
 
     override init() {
+        preferences = .standard
         playerPresenter = { popover, button in
             popover.show(relativeTo: button.bounds, of: button, preferredEdge: .minY)
             NSApplication.shared.activate(ignoringOtherApps: true)
@@ -39,7 +41,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         super.init()
     }
 
-    init(playerPresenter: @escaping PlayerPresenter) {
+    init(preferences: UserDefaults = .standard, playerPresenter: @escaping PlayerPresenter) {
+        self.preferences = preferences
         self.playerPresenter = playerPresenter
         super.init()
     }
@@ -103,13 +106,17 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    private func presentPlayerOnFirstLaunch() {
-        guard !UserDefaults.standard.bool(forKey: Self.firstLaunchPlayerKey) else { return }
+    private func presentPlayerOnFirstLaunch(attempt: Int = 0) {
+        guard !preferences.bool(forKey: Self.firstLaunchPlayerKey) else { return }
+        guard attempt < 20 else { return }
 
-        DispatchQueue.main.async { [weak self] in
+        let delay = attempt == 0 ? 0 : 0.25
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
             guard let self, let button = self.statusItem?.button else { return }
             if self.showPopover(relativeTo: button) {
-                UserDefaults.standard.set(true, forKey: Self.firstLaunchPlayerKey)
+                self.preferences.set(true, forKey: Self.firstLaunchPlayerKey)
+            } else {
+                self.presentPlayerOnFirstLaunch(attempt: attempt + 1)
             }
         }
     }

@@ -13,4 +13,9 @@ final class RadioStatusTests: XCTestCase {
         XCTAssertEqual(status.history.map(\.title), ["Textural Being - Sept", "Atom TM - Friendly Cortex"])
         XCTAssertNotNil(status.currentTrack.startedAt)
     }
+
+    @MainActor
+    func testWebsiteLinkUsesThe9128VercelSite() {
+        XCTAssertEqual(RadioService.websiteURL.absoluteString, "https://9128-live-player.vercel.app/")
+    }
 }

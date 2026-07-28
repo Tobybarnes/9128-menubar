@@ -42,11 +42,24 @@ struct SettingsView: View {
                     .foregroundStyle(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
+
+            Section("About") {
+                Text(versionLabel)
+                    .font(.caption.monospacedDigit())
+                    .foregroundStyle(.secondary)
+                    .textSelection(.enabled)
+            }
         }
         .formStyle(.grouped)
         .frame(width: 470)
         .fixedSize(horizontal: false, vertical: true)
         .padding(.bottom, 8)
+    }
+
+    private var versionLabel: String {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.0"
+        let beta = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "3"
+        return "Version \(version) · Beta \(beta)"
     }
 
     @ViewBuilder

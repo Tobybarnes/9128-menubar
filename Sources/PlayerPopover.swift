@@ -208,7 +208,7 @@ struct PlayerPopover: View {
                 Image(systemName: "globe")
             }
             .buttonStyle(.borderless)
-            .help("Open 9128.live")
+            .help("Open the 9128 website")
 
             SettingsLink {
                 Image(systemName: "gearshape")

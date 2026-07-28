@@ -3,7 +3,7 @@ import Foundation
 @MainActor
 final class RadioService: ObservableObject {
     static let streamURL = URL(string: "https://streams.radio.co/s0aa1e6f4a/listen")!
-    static let websiteURL = URL(string: "https://9128.live/")!
+    static let websiteURL = URL(string: "https://9128-live-player.vercel.app/")!
     private static let statusURL = URL(string: "https://public.radio.co/stations/s0aa1e6f4a/status")!
 
     @Published private(set) var status: RadioStatus?
