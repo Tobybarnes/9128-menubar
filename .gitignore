@@ -1,6 +1,7 @@
 .DS_Store
 .build/
-DerivedData/
+DerivedData*/
+SourcePackages/
 Config/Secrets.xcconfig
 *.xcuserstate
 xcuserdata/

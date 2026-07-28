@@ -3,6 +3,7 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var lastFM: LastFMManager
     @ObservedObject var launchAtLogin: LaunchAtLoginController
+    @ObservedObject var updater: AppUpdater
 
     var body: some View {
         Form {
@@ -17,6 +18,11 @@ struct SettingsView: View {
                 if let error = launchAtLogin.errorMessage {
                     Text(error).font(.caption).foregroundStyle(.orange)
                 }
+
+                Button("Check for Updates…") {
+                    updater.checkForUpdates()
+                }
+                .disabled(!updater.canCheckForUpdates)
             }
 
             Section("Last.fm") {
@@ -44,22 +50,20 @@ struct SettingsView: View {
             }
 
             Section("About") {
-                Text(versionLabel)
+                Text(AppPresentation.versionLabel(infoDictionary: Bundle.main.infoDictionary ?? [:]))
                     .font(.caption.monospacedDigit())
                     .foregroundStyle(.secondary)
                     .textSelection(.enabled)
+                Text(AppPresentation.builderCredit)
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
             }
         }
         .formStyle(.grouped)
+        .navigationTitle(AppPresentation.settingsTitle)
         .frame(width: 470)
         .fixedSize(horizontal: false, vertical: true)
         .padding(.bottom, 8)
-    }
-
-    private var versionLabel: String {
-        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "1.0.0"
-        let beta = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String ?? "4"
-        return "Version \(version) · Beta \(beta)"
     }
 
     @ViewBuilder

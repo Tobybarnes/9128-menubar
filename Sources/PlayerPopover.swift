@@ -37,7 +37,7 @@ struct PlayerPopover: View {
 
     private var header: some View {
         HStack {
-            Text("9128")
+            Text(AppPresentation.playerTitle)
                 .font(.system(size: 24, weight: .bold, design: .rounded))
             Spacer()
             HStack(spacing: 6) {

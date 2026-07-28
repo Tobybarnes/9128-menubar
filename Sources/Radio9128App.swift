@@ -10,7 +10,8 @@ struct Radio9128App: App {
         Settings {
             SettingsView(
                 lastFM: appDelegate.model.lastFM,
-                launchAtLogin: appDelegate.model.launchAtLogin
+                launchAtLogin: appDelegate.model.launchAtLogin,
+                updater: appDelegate.updater
             )
         }
         .windowResizability(.contentSize)
@@ -24,6 +25,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private static let firstLaunchPlayerKey = "com.tobybarnes.radio9128.hasShownBeta4Player"
 
     let model = AppModel()
+    let updater = AppUpdater()
 
     private var statusItem: NSStatusItem?
     private let popover = NSPopover()

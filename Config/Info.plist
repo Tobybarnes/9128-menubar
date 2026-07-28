@@ -13,13 +13,15 @@
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
-    <string>9128live_menubar_app</string>
+    <string>9128.live Player</string>
+    <key>CFBundleDisplayName</key>
+    <string>9128.live Player</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.0.0</string>
+    <string>1.0</string>
     <key>CFBundleVersion</key>
-    <string>4</string>
+    <string>5</string>
     <key>LSMinimumSystemVersion</key>
     <string>$(MACOSX_DEPLOYMENT_TARGET)</string>
     <key>LSUIElement</key>
@@ -30,5 +32,9 @@
     <string>$(LASTFM_SHARED_SECRET)</string>
     <key>NSHumanReadableCopyright</key>
     <string>Personal project by Toby Barnes</string>
+    <key>SUFeedURL</key>
+    <string>https://9128-live-player.vercel.app/menubar/appcast.xml</string>
+    <key>SUPublicEDKey</key>
+    <string>QlNej+2hceZsiylJyOErlmHnTFQ7Eyetd7B2j+IeIS4=</string>
 </dict>
 </plist>
