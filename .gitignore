@@ -4,3 +4,4 @@ DerivedData/
 Config/Secrets.xcconfig
 *.xcuserstate
 xcuserdata/
+.worktrees/
