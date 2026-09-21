@@ -24,16 +24,56 @@ final class LastFMConfigurationTests: XCTestCase {
         ]))
     }
 
+    func testRejectsUnexpandedBuildSettings() {
+        XCTAssertNil(LastFMConfiguration(infoDictionary: [
+            "LastFMAPIKey": "$(LASTFM_API_KEY)",
+            "LastFMSharedSecret": "$(LASTFM_SHARED_SECRET)",
+        ]))
+    }
+
     @MainActor
-    func testBeta4UsesFreshKeychainNamespace() throws {
-        let manager = LastFMManager(configuration: LastFMConfiguration(infoDictionary: [
+    func testManagerRestoresAccountInABuildWithoutCredentials() throws {
+        let configuration = try XCTUnwrap(LastFMConfiguration(infoDictionary: [
             "LastFMAPIKey": "developer-key",
             "LastFMSharedSecret": "developer-secret",
         ]))
-        let store = try XCTUnwrap(
-            Mirror(reflecting: manager).children.first(where: { $0.label == "store" })?.value as? KeychainStore
+        let store = LastFMConnectionStore(
+            store: MemoryLastFMKeychain(),
+            legacyStore: MemoryLastFMKeychain()
         )
+        try store.save(LastFMConnection(
+            configuration: configuration,
+            session: LastFMSession(username: "listener", key: "session-key")
+        ))
 
-        XCTAssertEqual(store.service, "com.tobybarnes.radio9128.beta4")
+        let manager = LastFMManager(configuration: nil, store: store)
+
+        XCTAssertEqual(manager.state, .connected(username: "listener"))
+        XCTAssertTrue(manager.configurationIsAvailable)
+        manager.disconnect()
+        XCTAssertFalse(manager.isConnected)
+        XCTAssertTrue(manager.configurationIsAvailable)
+        XCTAssertNil(try store.load(bundledConfiguration: nil)?.session)
+    }
+
+    @MainActor
+    func testManagerDoesNotReportDisconnectedIfSavingFails() throws {
+        let keychain = MemoryLastFMKeychain()
+        let store = LastFMConnectionStore(store: keychain, legacyStore: MemoryLastFMKeychain())
+        let configuration = try XCTUnwrap(LastFMConfiguration(infoDictionary: [
+            "LastFMAPIKey": "developer-key",
+            "LastFMSharedSecret": "developer-secret",
+        ]))
+        try store.save(LastFMConnection(
+            configuration: configuration,
+            session: LastFMSession(username: "listener", key: "session-key")
+        ))
+        let manager = LastFMManager(configuration: nil, store: store)
+        keychain.writeError = .unavailable
+
+        manager.disconnect()
+
+        XCTAssertTrue(manager.isConnected)
+        XCTAssertNotNil(manager.activityMessage)
     }
 }

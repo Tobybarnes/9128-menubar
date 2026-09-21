@@ -5,7 +5,7 @@ struct LastFMCredentials: Sendable {
     let sharedSecret: String
 }
 
-struct LastFMSession: Sendable {
+struct LastFMSession: Codable, Equatable, Sendable {
     let username: String
     let key: String
 }

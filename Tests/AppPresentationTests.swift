@@ -2,13 +2,13 @@ import XCTest
 @testable import Radio9128
 
 final class AppPresentationTests: XCTestCase {
-    func testVersionLabelUsesPublicVersionWithoutInternalBuildNumber() {
+    func testVersionLabelDistinguishesBuildsOfTheSamePublicVersion() {
         let label = AppPresentation.versionLabel(infoDictionary: [
             "CFBundleShortVersionString": "1.0",
             "CFBundleVersion": "5",
         ])
 
-        XCTAssertEqual(label, "Version 1.0")
+        XCTAssertEqual(label, "Version 1.0 (build 5)")
     }
 
     func testPlayerAndSettingsUseThe9128LiveName() {

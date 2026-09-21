@@ -15,27 +15,31 @@ final class LastFMManager: ObservableObject {
     @Published private(set) var lastScrobble: String?
     @Published private(set) var activityMessage: String?
 
-    private enum Account {
-        static let session = "lastfm-session"
-        static let username = "lastfm-username"
-    }
-
-    private let configuration: LastFMConfiguration?
-    private let store = KeychainStore(service: "com.tobybarnes.radio9128.beta4")
-    private let client = LastFMClient()
+    private let store: LastFMConnectionStore
+    private var connection: LastFMConnection?
+    private let client: LastFMClient
     private var pendingToken: String?
-    private var sessionKey: String?
 
-    init(configuration: LastFMConfiguration? = LastFMConfiguration()) {
-        self.configuration = configuration
-        sessionKey = store.string(for: Account.session)
-        if configuration == nil {
-            state = .failed("This build is missing its Last.fm configuration.")
-        } else if let sessionKey, !sessionKey.isEmpty,
-           let username = store.string(for: Account.username), !username.isEmpty {
-            state = .connected(username: username)
-        } else {
-            state = .disconnected
+    private var sessionKey: String? { connection?.session?.key }
+
+    init(
+        configuration: LastFMConfiguration? = LastFMConfiguration(),
+        store: LastFMConnectionStore = LastFMConnectionStore(),
+        client: LastFMClient = LastFMClient()
+    ) {
+        self.store = store
+        self.client = client
+        state = .disconnected
+        do {
+            connection = try store.load(bundledConfiguration: configuration)
+            if connection == nil {
+                state = .failed("Last.fm setup is unavailable. Check for an app update.")
+            } else if let session = connection?.session {
+                state = .connected(username: session.username)
+            }
+        } catch {
+            state = .failed("Could not open the saved Last.fm connection.")
+            activityMessage = error.localizedDescription
         }
     }
 
@@ -45,7 +49,7 @@ final class LastFMManager: ObservableObject {
     }
 
     var configurationIsAvailable: Bool {
-        configuration != nil
+        connection != nil
     }
 
     var connectionLabel: String {
@@ -59,8 +63,8 @@ final class LastFMManager: ObservableObject {
     }
 
     func connect() async {
-        guard let credentials else {
-            state = .failed("This build is missing its Last.fm configuration.")
+        guard let credentials, let connection else {
+            state = .failed("Last.fm setup is unavailable. Check for an app update.")
             return
         }
         state = .connecting
@@ -68,6 +72,7 @@ final class LastFMManager: ObservableObject {
 
         do {
             let token = try await client.getToken(credentials: credentials)
+            guard self.connection == connection else { return }
             pendingToken = token
             var components = URLComponents(string: "https://www.last.fm/api/auth/")!
             components.queryItems = [
@@ -80,6 +85,7 @@ final class LastFMManager: ObservableObject {
             NSWorkspace.shared.open(url)
             state = .waitingForApproval
         } catch {
+            guard self.connection == connection else { return }
             handle(error)
         }
     }
@@ -89,47 +95,61 @@ final class LastFMManager: ObservableObject {
             state = .failed("Start the Last.fm connection again.")
             return
         }
-        guard let credentials else {
-            state = .failed("This build is missing its Last.fm configuration.")
+        guard let credentials, let connection else {
+            state = .failed("Last.fm setup is unavailable. Check for an app update.")
             return
         }
         state = .connecting
 
         do {
             let session = try await client.getSession(token: pendingToken, credentials: credentials)
-            try store.set(session.key, for: Account.session)
-            try store.set(session.username, for: Account.username)
-            sessionKey = session.key
+            guard self.pendingToken == pendingToken, self.connection == connection else { return }
+            var authorized = connection
+            authorized.session = session
+            try store.save(authorized)
+            self.connection = authorized
             self.pendingToken = nil
             state = .connected(username: session.username)
             activityMessage = "Last.fm is ready to scrobble."
         } catch {
+            guard self.pendingToken == pendingToken, self.connection == connection else { return }
             handle(error)
         }
     }
 
     func validateSession() async {
-        guard let sessionKey, let credentials else { return }
+        guard let sessionKey, let credentials, let connection else { return }
         do {
             let username = try await client.getAuthenticatedUsername(
                 sessionKey: sessionKey,
                 credentials: credentials
             )
-            try store.set(username, for: Account.username)
+            guard self.connection == connection else { return }
+            var verified = connection
+            verified.session = LastFMSession(username: username, key: sessionKey)
+            try store.save(verified)
+            self.connection = verified
             state = .connected(username: username)
             activityMessage = "Last.fm authorization verified."
         } catch let apiError as LastFMAPIError where apiError.code == 9 {
+            guard self.connection == connection else { return }
             disconnect()
             state = .failed("Last.fm authorization expired. Connect again.")
         } catch {
+            guard self.connection == connection else { return }
             activityMessage = "Could not verify Last.fm right now."
         }
     }
 
     func disconnect() {
-        store.delete(Account.session)
-        store.delete(Account.username)
-        sessionKey = nil
+        do {
+            if let connection {
+                self.connection = try store.disconnect(connection)
+            }
+        } catch {
+            activityMessage = "Could not save the Last.fm disconnection. Please try again."
+            return
+        }
         pendingToken = nil
         state = .disconnected
         lastScrobble = nil
@@ -137,7 +157,7 @@ final class LastFMManager: ObservableObject {
     }
 
     func updateNowPlaying(_ track: TrackMetadata) {
-        guard let sessionKey, let credentials else { return }
+        guard let sessionKey, let credentials, let connection else { return }
         Task {
             do {
                 try await client.updateNowPlaying(
@@ -145,15 +165,17 @@ final class LastFMManager: ObservableObject {
                     sessionKey: sessionKey,
                     credentials: credentials
                 )
+                guard self.connection == connection else { return }
                 activityMessage = "Now playing sent to Last.fm."
             } catch {
+                guard self.connection == connection else { return }
                 handleSubmissionError(error)
             }
         }
     }
 
     func scrobble(_ track: TrackMetadata, listenedAt: Date) {
-        guard let sessionKey, let credentials else { return }
+        guard let sessionKey, let credentials, let connection else { return }
         Task {
             do {
                 try await client.scrobble(
@@ -162,18 +184,19 @@ final class LastFMManager: ObservableObject {
                     sessionKey: sessionKey,
                     credentials: credentials
                 )
+                guard self.connection == connection else { return }
                 lastScrobble = track.displayName
                 activityMessage = "Scrobbled \(track.displayName)."
             } catch {
+                guard self.connection == connection else { return }
                 handleSubmissionError(error)
             }
         }
     }
 
     private var credentials: LastFMCredentials? {
-        configuration.map {
-            LastFMCredentials(apiKey: $0.apiKey, sharedSecret: $0.sharedSecret)
-        }
+        guard let configuration = connection?.configuration else { return nil }
+        return LastFMCredentials(apiKey: configuration.apiKey, sharedSecret: configuration.sharedSecret)
     }
 
     private func handle(_ error: Error) {

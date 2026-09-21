@@ -12,16 +12,19 @@
 		164C43FD7AE2D72E309CF901 /* AppUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4C1A5759225717AE4541541 /* AppUpdater.swift */; };
 		16C249BC84F2DD24AFD570DB /* PlayerPopover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BF73CAAC9BCB86EC76BC2EB /* PlayerPopover.swift */; };
 		1BBBA32818606117298CC971 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6818C150FB130F1D9452F51F /* AppModel.swift */; };
+		2620DC23E3C1C227A52A22B2 /* LastFMConnectionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D2060464767AFEA298C37A /* LastFMConnectionStore.swift */; };
 		281FFA952BE4FF41069F94B2 /* LastFMSigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D548706D035AFD537F90DF94 /* LastFMSigner.swift */; };
 		33322B558D7B8ED53558EF71 /* TrackMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078FB3C3F7F5049CB940DC /* TrackMetadata.swift */; };
 		35967FD5AB4363F3E375B250 /* AppPresentationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA959DDCC7AAE6AFBF320F48 /* AppPresentationTests.swift */; };
 		429D3FA2A69EFAFC1DF7F06E /* RadioStatusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9059B6D1F49FADCBFBC4537B /* RadioStatusTests.swift */; };
+		4565F9ED7966584E7735F128 /* LastFMConnectionStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D8C1E87D3F08F57E9F0B68 /* LastFMConnectionStoreTests.swift */; };
 		4A41E5AE24B9D725D73BBB1F /* AppUpdaterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0EAFE7EA12B71790389DDFD /* AppUpdaterTests.swift */; };
 		4E25E9A3CC9CB1B2E22539A7 /* RadioStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C0CF50C050F6B8EE01761E /* RadioStatus.swift */; };
 		5DB99A0DFAE9635E7F16D3F8 /* Sparkle in Frameworks */ = {isa = PBXBuildFile; productRef = 90E3C3154AE38BD1DE8105F7 /* Sparkle */; };
 		63A677A384F6C947B1F8E150 /* BrandAssetsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06DD8E6C3100A7FFBF79C1FC /* BrandAssetsTests.swift */; };
 		6BC5B4E7E2516282320893B7 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFD34ECA25169BA2082AAB58 /* KeychainStore.swift */; };
 		716C088E9F40B99B39AD712E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A971EE543B1D1DD9A1785DF /* SettingsView.swift */; };
+		8A8D11645637A7E1FCCE6B39 /* LastFMManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D635450E952C41B91E0725F2 /* LastFMManagerTests.swift */; };
 		97322533DC181B1C742F2E1F /* LaunchAtLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CD6947EF9BED76B80E907A1 /* LaunchAtLoginController.swift */; };
 		9733458C2BC93EF90A90D808 /* AppIdentityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD09E7A78F83C62A9B5CDF37 /* AppIdentityTests.swift */; };
 		AC2731AD7161359D14DB7DCF /* ScrobblePolicyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F18253FEC3CBA6469AC973 /* ScrobblePolicyTests.swift */; };
@@ -60,6 +63,7 @@
 		3F08B7070BCD167DE3CF603C /* LastFMSigningTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMSigningTests.swift; sourceTree = "<group>"; };
 		422FADF3ADBA69A323DBE8D9 /* RadioService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioService.swift; sourceTree = "<group>"; };
 		4E1D53F2C2BDB9E7A0D44543 /* Radio9128.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Radio9128.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		59D8C1E87D3F08F57E9F0B68 /* LastFMConnectionStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMConnectionStoreTests.swift; sourceTree = "<group>"; };
 		67BED6B86A036C5256A7D267 /* LastFMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMClient.swift; sourceTree = "<group>"; };
 		6818C150FB130F1D9452F51F /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 		68F9B53D506BF10D7B222AF4 /* AppLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLaunchTests.swift; sourceTree = "<group>"; };
@@ -78,10 +82,12 @@
 		CDA3AEA5500036CC9F11B3BD /* ASIPIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ASIPIcon.png; sourceTree = "<group>"; };
 		D4F18253FEC3CBA6469AC973 /* ScrobblePolicyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobblePolicyTests.swift; sourceTree = "<group>"; };
 		D548706D035AFD537F90DF94 /* LastFMSigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMSigner.swift; sourceTree = "<group>"; };
+		D635450E952C41B91E0725F2 /* LastFMManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMManagerTests.swift; sourceTree = "<group>"; };
 		DA959DDCC7AAE6AFBF320F48 /* AppPresentationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresentationTests.swift; sourceTree = "<group>"; };
 		E0EAFE7EA12B71790389DDFD /* AppUpdaterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUpdaterTests.swift; sourceTree = "<group>"; };
 		F16BD622E2043F2D8BE39F84 /* Radio9128Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Radio9128Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F31544B5C6076F47CD97809D /* ScrobblePolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrobblePolicy.swift; sourceTree = "<group>"; };
+		F6D2060464767AFEA298C37A /* LastFMConnectionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastFMConnectionStore.swift; sourceTree = "<group>"; };
 		FC7FE01849AA9B4057933242 /* ASIPMenuBarTemplate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ASIPMenuBarTemplate.png; sourceTree = "<group>"; };
 		FFD34ECA25169BA2082AAB58 /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +113,7 @@
 				FFD34ECA25169BA2082AAB58 /* KeychainStore.swift */,
 				67BED6B86A036C5256A7D267 /* LastFMClient.swift */,
 				6E2875D1630F6DDFFCFFA6F9 /* LastFMConfiguration.swift */,
+				F6D2060464767AFEA298C37A /* LastFMConnectionStore.swift */,
 				8658AD3C973D57297209CBF2 /* LastFMManager.swift */,
 				D548706D035AFD537F90DF94 /* LastFMSigner.swift */,
 				6CD6947EF9BED76B80E907A1 /* LaunchAtLoginController.swift */,
@@ -140,6 +147,8 @@
 				E0EAFE7EA12B71790389DDFD /* AppUpdaterTests.swift */,
 				06DD8E6C3100A7FFBF79C1FC /* BrandAssetsTests.swift */,
 				6DD25D73C00CF363CA485942 /* LastFMConfigurationTests.swift */,
+				59D8C1E87D3F08F57E9F0B68 /* LastFMConnectionStoreTests.swift */,
+				D635450E952C41B91E0725F2 /* LastFMManagerTests.swift */,
 				3F08B7070BCD167DE3CF603C /* LastFMSigningTests.swift */,
 				9059B6D1F49FADCBFBC4537B /* RadioStatusTests.swift */,
 				D4F18253FEC3CBA6469AC973 /* ScrobblePolicyTests.swift */,
@@ -271,6 +280,8 @@
 				4A41E5AE24B9D725D73BBB1F /* AppUpdaterTests.swift in Sources */,
 				63A677A384F6C947B1F8E150 /* BrandAssetsTests.swift in Sources */,
 				D348965DA769BE6E8B83C23E /* LastFMConfigurationTests.swift in Sources */,
+				4565F9ED7966584E7735F128 /* LastFMConnectionStoreTests.swift in Sources */,
+				8A8D11645637A7E1FCCE6B39 /* LastFMManagerTests.swift in Sources */,
 				E9F93796BB6A15EB63CCC8AC /* LastFMSigningTests.swift in Sources */,
 				429D3FA2A69EFAFC1DF7F06E /* RadioStatusTests.swift in Sources */,
 				AC2731AD7161359D14DB7DCF /* ScrobblePolicyTests.swift in Sources */,
@@ -288,6 +299,7 @@
 				6BC5B4E7E2516282320893B7 /* KeychainStore.swift in Sources */,
 				EC3A0E0E032BBA22C2250677 /* LastFMClient.swift in Sources */,
 				CA33CE9C261AACEB9641D78B /* LastFMConfiguration.swift in Sources */,
+				2620DC23E3C1C227A52A22B2 /* LastFMConnectionStore.swift in Sources */,
 				D0741AD7FE631B27A14D2BE1 /* LastFMManager.swift in Sources */,
 				281FFA952BE4FF41069F94B2 /* LastFMSigner.swift in Sources */,
 				97322533DC181B1C742F2E1F /* LaunchAtLoginController.swift in Sources */,

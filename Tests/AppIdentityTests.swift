@@ -7,9 +7,9 @@ final class AppIdentityTests: XCTestCase {
         XCTAssertEqual(Bundle.main.object(forInfoDictionaryKey: "CFBundleName") as? String, "9128.live Player")
     }
 
-    func testHostAppBundlesVersionOneUpdateInformation() {
-        XCTAssertEqual(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String, "1.0")
-        XCTAssertEqual(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String, "5")
+    func testHostAppBundlesTheNextReleaseVersionAndBuild() {
+        XCTAssertEqual(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String, "1.0.1")
+        XCTAssertEqual(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String, "6")
     }
 
     func testHostAppDeclaresSecureSparkleFeed() throws {
@@ -20,7 +20,7 @@ final class AppIdentityTests: XCTestCase {
             Bundle.main.object(forInfoDictionaryKey: "SUPublicEDKey") as? String
         )
 
-        XCTAssertEqual(feedURL, "https://9128-live-player.vercel.app/menubar/appcast.xml")
+        XCTAssertEqual(feedURL, "https://raw.githubusercontent.com/Tobybarnes/9128-menubar/main/appcast.xml")
         XCTAssertFalse(publicKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
     }
 }

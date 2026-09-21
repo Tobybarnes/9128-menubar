@@ -7,6 +7,9 @@ enum AppPresentation {
 
     static func versionLabel(infoDictionary: [String: Any]) -> String {
         let version = infoDictionary["CFBundleShortVersionString"] as? String ?? "1.0"
-        return "Version \(version)"
+        guard let build = infoDictionary["CFBundleVersion"] as? String, !build.isEmpty else {
+            return "Version \(version)"
+        }
+        return "Version \(version) (build \(build))"
     }
 }

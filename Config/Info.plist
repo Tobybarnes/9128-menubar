@@ -19,9 +19,9 @@
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.0</string>
+    <string>1.0.1</string>
     <key>CFBundleVersion</key>
-    <string>5</string>
+    <string>6</string>
     <key>LSMinimumSystemVersion</key>
     <string>$(MACOSX_DEPLOYMENT_TARGET)</string>
     <key>LSUIElement</key>
@@ -33,7 +33,7 @@
     <key>NSHumanReadableCopyright</key>
     <string>Personal project by Toby Barnes</string>
     <key>SUFeedURL</key>
-    <string>https://9128-live-player.vercel.app/menubar/appcast.xml</string>
+    <string>https://raw.githubusercontent.com/Tobybarnes/9128-menubar/main/appcast.xml</string>
     <key>SUPublicEDKey</key>
     <string>QlNej+2hceZsiylJyOErlmHnTFQ7Eyetd7B2j+IeIS4=</string>
 </dict>
